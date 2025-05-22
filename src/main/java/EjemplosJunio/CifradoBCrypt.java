@@ -9,7 +9,7 @@ public class CifradoBCrypt {
         String password = "mi_contraseña_secreta";
         System.out.println("Password: " + password);
 
-        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+        String hash = BCrypt.hashpw(password, BCrypt.gensalt(10));
         System.out.println("Hash: " + hash);
 
         boolean coincide = BCrypt.checkpw(password, hash);

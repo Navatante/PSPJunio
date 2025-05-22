@@ -15,7 +15,7 @@ public class Log {
         ////////////////////////////
 
         // Crear y configurar el manejador de archivos
-        FileHandler fileHandler = new FileHandler("log.txt", true);
+        FileHandler fileHandler = new FileHandler("log.log", true);
 
         // Formato por defecto
         //fileHandler.setFormatter(new SimpleFormatter());
