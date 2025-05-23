@@ -60,6 +60,9 @@ public class ServidorHTTP {
                         entrada.read(buffer, 0, contentLength);
                         cuerpo.append(buffer);
 
+                        // Esta salida me sirve para ver el contenido del cuerpo y saber los datos que me llegan
+                        System.out.println("Contenido del cuerpo: " + cuerpo.toString());
+
                         // Separo el contenido del cuerpo dia=xxx&cantidad=yyy
                         String dato1 = cuerpo.toString().split("&")[0];
                         String dato2 = cuerpo.toString().split("&")[1];
