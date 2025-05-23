@@ -1,13 +1,9 @@
 package EjercicioPropuesto3;
 
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.security.KeyStore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
