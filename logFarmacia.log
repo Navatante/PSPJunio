@@ -1,0 +1,19 @@
+2025/05/23 14:36:22 - Sistema de logs de farmacia inicializado correctamente
+2025/05/23 14:36:22 - Error en TEST: Prueba del sistema de logs de farmacia. Producto: Paracetamol, Valor recibido: valor_prueba
+2025/05/23 14:36:22 - Error en SERVIDOR: Error al iniciar servidor. Producto: N/A, Valor recibido: AlmacenSSL (The system cannot find the file specified)
+2025/05/23 14:37:32 - Sistema de logs de farmacia inicializado correctamente
+2025/05/23 14:37:32 - Error en TEST: Prueba del sistema de logs de farmacia. Producto: Paracetamol, Valor recibido: valor_prueba
+2025/05/23 14:37:32 - Sistema de farmacia iniciado - Puerto 8443
+2025/05/23 14:38:20 - Stock insuficiente: Paracetamol - Solicitado: 5 - Disponible: 0
+2025/05/23 14:38:42 - Venta exitosa: Ibuprofeno - Cantidad: 5 - Stock restante: 10
+2025/05/23 14:41:40 - Sistema de logs de farmacia inicializado correctamente
+2025/05/23 14:41:40 - Error en TEST: Prueba del sistema de logs de farmacia. Producto: Paracetamol, Valor recibido: valor_prueba
+2025/05/23 14:41:41 - Sistema de farmacia iniciado - Puerto 8443
+2025/05/23 14:42:09 - Sistema de logs de farmacia inicializado correctamente
+2025/05/23 14:42:09 - Error en TEST: Prueba del sistema de logs de farmacia. Producto: Paracetamol, Valor recibido: valor_prueba
+2025/05/23 14:42:09 - Sistema de farmacia iniciado - Puerto 8443
+2025/05/23 14:42:56 - Error en PAGINA_PRINCIPAL: Error al generar página. Producto: N/A, Valor recibido: For input string: "g"
+2025/05/23 14:43:01 - Error en PAGINA_PRINCIPAL: Error al generar página. Producto: N/A, Valor recibido: For input string: "g"
+2025/05/23 15:31:13 - Sistema de logs de farmacia inicializado correctamente
+2025/05/23 15:31:13 - Error en TEST: Prueba del sistema de logs de farmacia. Producto: Paracetamol, Valor recibido: valor_prueba
+2025/05/23 15:31:13 - Sistema de farmacia iniciado - Puerto 8443

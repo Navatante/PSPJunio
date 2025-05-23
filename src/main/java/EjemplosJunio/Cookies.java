@@ -93,19 +93,19 @@ public class Cookies {
 
                 String respuesta; // Contendrá la respuesta generada por el servidor.
 
-                if (ruta.equals("/")) {
-                    respuesta = construirRespuesta(200, Paginas.html_index, sessionId);
-                } else if (ruta.startsWith("/adivina")) {
-                    respuesta = construirRespuesta(200, Paginas.html_adivina, sessionId);
-                } else if (ruta.startsWith("/dados")) {
-                    respuesta = construirRespuesta(200, Paginas.html_dados, sessionId);
-                } else if (ruta.startsWith("/ppt")) {
-                    respuesta = construirRespuesta(200, Paginas.html_ppt, sessionId);
-                } else {
-                    respuesta = construirRespuesta(404, Paginas.html_noencontrado, sessionId);
-                }
-
-                salida.println(respuesta); // Envía la respuesta al cliente.
+////                if (ruta.equals("/")) {
+////                    respuesta = construirRespuesta(200, Paginas.html_index, sessionId);
+////                } else if (ruta.startsWith("/adivina")) {
+////                    respuesta = construirRespuesta(200, Paginas.html_adivina, sessionId);
+////                } else if (ruta.startsWith("/dados")) {
+////                    respuesta = construirRespuesta(200, Paginas.html_dados, sessionId);
+////                } else if (ruta.startsWith("/ppt")) {
+////                    respuesta = construirRespuesta(200, Paginas.html_ppt, sessionId);
+////                } else {
+////                    respuesta = construirRespuesta(404, Paginas.html_noencontrado, sessionId);
+////                }
+//
+//                salida.println(respuesta); // Envía la respuesta al cliente.
 
             } catch (IOException e) {
                 e.printStackTrace();
