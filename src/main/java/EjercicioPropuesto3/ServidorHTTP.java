@@ -4,13 +4,12 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.security.KeyStore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ServidorHTTP {
 
@@ -21,6 +20,7 @@ public class ServidorHTTP {
 
         ServerSocket serverSocket = new ServerSocket(PUERTO);
         System.out.println("Servidor HTTP iniciado en el puerto " + PUERTO);
+        System.out.println("Visita http://localhost:" + PUERTO);
 
         while (true) {
             // Esperar a que un cliente se conecte
@@ -45,7 +45,7 @@ public class ServidorHTTP {
 
                 // Leer la primera linea de la peticion HTTP
                 String peticion = entrada.readLine();
-                if (peticion != null && (!peticion.startsWith("GET") || !peticion.startsWith("POST"))) {
+                if (peticion != null && (peticion.startsWith("GET") || peticion.startsWith("POST"))) {
                     String ruta = peticion.split(" ")[1]; // Extraer la ruta de la peticion
                     StringBuilder cuerpo = new StringBuilder(); // Para almacenar el cuerpo de la peticion
                     String linea;
@@ -67,10 +67,42 @@ public class ServidorHTTP {
                         // Separo el contenido del cuerpo dia=xxx&cantidad=yyy
                         String dato1 = cuerpo.toString().split("&")[0];
                         String dato2 = cuerpo.toString().split("&")[1];
+
+                        String dia = dato1.split("=")[1];
+                        int cantidad = Integer.parseInt(dato2.split("=")[1]);
+
+                        System.out.println("La nueva reserva ha sido realizada para el dia " + dia + " con " + cantidad + " habitaciones.");
+                        GestorFichero.actualizarFichero(dia, cantidad); // Actualiza el fichero con la nueva reserva
                     }
+
+                    String respuesta;
+                    if (ruta.equals("/")) {
+                        // Si la ruta es la raíz, devuelve el formulario HTML
+                        respuesta = construirRespuesta(200, Paginas.html_reservas);
+                    } else {
+                        respuesta = construirRespuesta(404, Paginas.html_noEncontrado);
+                    }
+
+                    salida.println(respuesta); // Envia la respuesta al cliente
+
+                    cliente.close(); // Cierra la conexion
+
                 }
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception ex) {
+                Logger.getLogger(HiloServidor.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+
+        private String construirRespuesta(int codigo, String html) {
+            String lineaInicial = codigo == 200 ? "HTTP/1.1 200 OK" : "HTTP/1.1 404 Not Found";
+            return lineaInicial + "\n" +
+                    "Content-Type: text/html; charset=UTF-8" +
+                    "\nContent-Length: " + html.length() +
+                    "\n\n" +
+                    html;
         }
 
     }
