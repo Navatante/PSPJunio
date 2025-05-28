@@ -1,7 +1,9 @@
-package EjercicioPropuesto3;
+package HotelComentarios;
 
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -30,18 +32,17 @@ public class ServidorHTTP {
         private final Socket cliente;
 
         public HiloServidor(Socket cliente) {
-            this.cliente = cliente; // Asocia el socket del cliente al hilo
+            this.cliente = cliente;
         }
 
         @Override
         public void run() {
-
             try (BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
-                    PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true)) {
+                 PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true)) {
 
                 // Leer la primera linea de la peticion HTTP
                 String peticion = entrada.readLine();
-                if (peticion != null && (peticion.startsWith("GET") || peticion.startsWith("POST"))) {
+                if(peticion != null && (peticion.startsWith("GET") || peticion.startsWith("POST"))) {
                     String ruta = peticion.split(" ")[1]; // Extraer la ruta de la peticion
                     StringBuilder cuerpo = new StringBuilder(); // Para almacenar el cuerpo de la peticion
                     String linea;
@@ -60,24 +61,47 @@ public class ServidorHTTP {
                         entrada.read(buffer, 0, contentLength);
                         cuerpo.append(buffer);
 
-                        // Esta salida me sirve para ver el contenido del cuerpo y saber los datos que me llegan
+                        // Contenido del cuerpo
                         System.out.println("Contenido del cuerpo: " + cuerpo.toString());
 
-                        // Separo el contenido del cuerpo dia=xxx&cantidad=yyy
-                        String dato1 = cuerpo.toString().split("&")[0];
-                        String dato2 = cuerpo.toString().split("&")[1];
+                        // Parsear los datos del formulario: tipo=x&valoracion=y&comentario=z
+                        String[] parametros = cuerpo.toString().split("&");
+                        String tipo = "";
+                        String valoracion = "";
+                        String comentario = "";
 
-                        String dia = dato1.split("=")[1];
-                        int cantidad = Integer.parseInt(dato2.split("=")[1]);
+                        // Extraer cada parámetro
+                        for (String parametro : parametros) {
+                            String[] partes = parametro.split("=", 2); // Limitamos a 2 partes por si el comentario tiene "="
+                            if (partes.length == 2) {
+                                String clave = partes[0];
+                                String valor = java.net.URLDecoder.decode(partes[1], "UTF-8"); // Decodificar URL
 
-                        System.out.println("La nueva reserva ha sido realizada para el dia " + dia + " con " + cantidad + " habitaciones.");
-                        GestorFichero.actualizarFichero(dia, cantidad); // Actualiza el fichero con la nueva reserva
+                                switch (clave) {
+                                    case "tipo":
+                                        tipo = valor;
+                                        break;
+                                    case "valoracion":
+                                        valoracion = valor;
+                                        break;
+                                    case "comentario":
+                                        comentario = valor;
+                                        break;
+                                }
+                            }
+                        }
+
+                        System.out.println("Nuevo comentario - Tipo: " + tipo + ", Valoración: " + valoracion + "/5, Comentario: " + comentario);
+
+                        // Llamar al metodo corregido con los 3 parámetros
+                        GestorFichero.actualizarFichero(tipo, valoracion, comentario);
                     }
 
+                    // Si la peticion no es un POST, sera un GET y veimos aqui:
                     String respuesta;
                     if (ruta.equals("/")) {
                         // Si la ruta es la raíz, devuelve el formulario HTML
-                        respuesta = construirRespuesta(200, Paginas.html_reservas);
+                        respuesta = construirRespuesta(200, Paginas.html_comentarios);
                     } else {
                         respuesta = construirRespuesta(404, Paginas.html_noEncontrado);
                     }
@@ -103,8 +127,5 @@ public class ServidorHTTP {
                     "\n\n" +
                     html;
         }
-
     }
 }
-
-

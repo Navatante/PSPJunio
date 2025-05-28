@@ -1,0 +1,28 @@
+may 28, 2025 9:54:49 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Iniciando actualizacion del archivo de reservas.
+may 28, 2025 9:54:49 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Archivo no existe, se  creara uno nuevo
+may 28, 2025 9:54:49 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Contenido cifrado correctamente
+may 28, 2025 9:54:49 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Nueva reserva registrada corrctamente: jueves : 6
+may 28, 2025 9:55:20 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Iniciando actualizacion del archivo de reservas.
+may 28, 2025 9:55:20 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Leyendo archivo existente
+may 28, 2025 9:55:20 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Archivo descifrado correctamente
+may 28, 2025 9:55:20 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Contenido cifrado correctamente
+may 28, 2025 9:55:20 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Nueva reserva registrada corrctamente: sabado : 8
+may 28, 2025 9:55:29 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Iniciando actualizacion del archivo de reservas.
+may 28, 2025 9:55:29 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Leyendo archivo existente
+may 28, 2025 9:55:29 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Archivo descifrado correctamente
+may 28, 2025 9:55:29 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Contenido cifrado correctamente
+may 28, 2025 9:55:29 A. M. HotelConLogerYArchivoUnico.GestorFichero actualizarFichero
+INFO: Nueva reserva registrada corrctamente: lunes : 15
